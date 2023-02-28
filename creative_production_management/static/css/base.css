@@ -8,6 +8,7 @@
     width: 100%;
     border-radius: 10px;
     display: flex;
+ 
 }
 .card-bg{
     background-color: white;
@@ -34,6 +35,7 @@
 
 .list-item-selected{
     padding-left: 16px;
+    padding-right: 16px;
     margin-top: 8px;
     margin-bottom: 8px;
     font-weight: bold;

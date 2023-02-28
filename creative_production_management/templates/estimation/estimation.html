@@ -6,46 +6,159 @@
   {% include 'includes/sidebar.html' %}
   <!-- <div class="col py-3">
       Estimations
-    </div> --> 
+    </div> -->
 
-  
 
   <div class="col py-7">
+    <br>
     <center>
-    <button id="add-estimation" name="add-estimation" class="btn btn-primary">Add Estimation</button>
+      <button id="add-estimation" name="add-estimation" class="btn btn-primary">Add Estimation</button>
     </center>
+    <br>
+
+    <div class="row g-2">
+      <div class="col-md-12">
+        <h4>Estimated Project Name </h4>
+        <br>
+
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="row g-3">
+
+            <div class="col-md-2">
+              <label for="estimated-cost">Estimated Time (Months)</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fa fa-clock-o"></i>
+                  </div>
+                </div>
+
+                <input id="estimated-time" name="estimated-time" type="number" class="form-control"
+                  placeholder="estimated time">
+              </div>
+            </div>
+
+
+            <div class="col-md-2">
+              <label for="estimated-cost">Estimated Cost (Taka)</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class=" fa fa-money"></i>
+                  </div>
+
+                </div>
+
+                <input id="estimated-cost" name="estimated-cost" type="number" class="form-control"
+                  placeholder="estimated cost">
+              </div>
+            </div>
+
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="Description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+          </div>
+      </div>
+
+      <h5>Add Designers</h5>
+
+      <select class="selectpicker" data-live-search="true">
+        <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+        <option data-tokens="mustard">Burger, Shake and a Smile</option>
+        <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+      </select>
+
+
+      <div class="md-2">
+        <button id="add-more-designer" name="add-more-designer" class="btn btn-primary"><i class="fa fa-plus"></i>
+          &nbsp;&nbsp;Add More Designers</button>
+      </div>
+
+      <h5>Add Vendors</h5>
+
+      <div class="md-2">
+        <button id="add-more-vendor" name="add-more-vendor" class="btn btn-primary"><i class="fa fa-plus"></i>
+          &nbsp;&nbsp;Add More Vendors</button>
+      </div>
+
+      <h5>Summary</h5>
+
+      <div class="card-bg">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Number of Designers</th>
+              <th scope="col">Number of Vendors</th>
+              <th scope="col">Estimated Time</th>
+              <th scope="col">Estimated Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Estimated Project Name</th>
+              <td>2 </td>
+              <td>3</td>
+              <td>3 Months</td>
+              <td>40,000</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+
+      <div class="md-2">
+        <button type="submit" id="add-more-designer" name="add-estimation" class="btn btn-success"><i
+            class="fa fa-plus"></i>
+          &nbsp;&nbsp;Add Estimation</button>
+      </div>
+      </form>
+
+    </div>
+
+    <br>
+
+
+
+
+    <!-- form -->
+
+
+
+
+
+
+    <!-- table -->
+
+    <h5>Previous Estimations</h5>
+
     <div class="card-bg">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Client</th>
-          <th scope="col">Title</th>
-          <th scope="col">Deadline</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Anup </td>
-          <td>Bhai</td>
-          <td>codu</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>GP</td>
-          <td>Summer</td>
-          <td>May, 2023</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>amitav reza</td>
-          <td>Winter</td>
-          <td>March, 2024</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Client</th>
+            <th scope="col">Title</th>
+            <th scope="col">Deadline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Anup </td>
+            <td>Bhai</td>
+            <td>codu</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
   </div>
 
 </div>

@@ -2,15 +2,22 @@
 <nav class="navbar bg-body-tertiary">
 
   <div class="container-fluid">
-    <a class="navbar-brand"><div class="nav-brand-container"><img src="{% static 'assets/ccm.png' %}" width="26px"> &nbsp;&nbsp;Creative Content Management</div></a>
+    <a class="navbar-brand">
+      <div class="nav-brand-container"><img src="{% static 'assets/ccm.png' %}" width="26px"> &nbsp;&nbsp;Creative
+        Content Management</div>
+    </a>
     <form class="d-flex" role="search">
       <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search...">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-    
+
     <div class="user-info">
       <img src="{% static 'assets/user.png' %}" width="26px">
       {{ username }}
     </div>
- </div>
+
+
+  </div>
+
 </nav>
+<hr>
