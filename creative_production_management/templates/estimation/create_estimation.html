@@ -20,7 +20,7 @@
           {% csrf_token %}
           <div class="row g-3">
 
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label for="estimation-name">Name</label>
               <div class="input-group">
                 <input id="estimation-name" name="name" type="text" class="form-control"
@@ -28,7 +28,7 @@
               </div>
             </div>
 
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label for="estimated-duration">Estimated Duration (Months)</label>
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -43,7 +43,7 @@
             </div>
 
 
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label for="estimated-cost">Estimated Cost (Taka)</label>
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -59,7 +59,6 @@
             </div>
           </div>
 
-          <br>
 
           <div class="form-group">
             <label for="Description">Description</label>
@@ -70,7 +69,7 @@
           <h5>Add Designers</h5>
           <div add-designer-container>
             <template add-designer-template>
-              <div class="row g-3 designer">
+              <div class="row g-3">
                 <div class="col-md-2">
                   <label for="tag">Tag</label>
                   <div class="input-group">
@@ -95,7 +94,7 @@
 
                 <div class="col-md-2">
                   <label for="num-of-designers">Number of Designers</label>
-                  <input id="num-of-designers" name="num-of-designers" type="number" class="form-control form-control-sm number-of-designers"
+                  <input id="num-of-designers" type="number" class="form-control form-control-sm number-of-designers"
                     placeholder="0" >
                   </div>
                 </div>
@@ -110,17 +109,22 @@
 
                     </div>
 
-                    <input id="estimated-cost" name="estimated-cost" type="number" class="form-control"
+                    <input id="estimated-cost" name="" type="number" class="form-control designer-cost"
                       placeholder="estimated cost">
                   </div>
                 </div>
+             
               </div>
             </template>
           </div>
-
+          
+          <input class="designer-count" name="designer-count" hidden></input>
           <div class="md-2">
-            <input type="button" id="add-designer-button" name="add-more-designer" class="btn btn-primary"><i class="fa fa-plus"></i>
-              &nbsp;&nbsp;Add More Designers</input>
+            <div class="input-icons">
+              
+            <button type="button"  id="add-designer-button" name="add-more-designer" class="btn btn-primary">  <i class="fa fa-plus"></i>
+              &nbsp;&nbsp;Add More Designers</button>
+            </div>
           </div>
 
           <h5>Add Vendors</h5>
@@ -131,7 +135,7 @@
                 <div class="col-md-2">
                   <label for="tag">Tag</label>
                   <div class="input-group">
-                    <select class="form-select form-select-sm mb-3" aria-label=".form-select-lg example">
+                    <select name="" class="form-select form-select-sm mb-3 tag" aria-label=".form-select-lg example">
                       {% for tag in tags %}
                         <option value={{ tag.name }}>{{ tag.name }}</option>
                       {% endfor %}
@@ -142,7 +146,7 @@
                 <div class="col-md-2">
                   <label for="Service">Service</label>
                   <div class="input-group">
-                    <select class="form-select form-select-sm mb-3" aria-label=".form-select-lg example">
+                    <select name="" class="form-select form-select-sm mb-3 service" aria-label=".form-select-lg example">
                       {% for service in vendor_services %}
                         <option value={{ service.name }}>{{ service.name }}</option>
                       {% endfor %}
@@ -152,7 +156,7 @@
 
                 <div class="col-md-2">
                   <label for="num-of-vendors">Number of Vendors</label>
-                  <input id="num-of-designers" name="num-of-designers" type="number" class="form-control form-control-sm"
+                  <input name="" id="num-of-vendors" type="number" class="form-control form-control-sm number-of-vendors"
                     placeholder="0">
                   </div>
                 </div>
@@ -167,17 +171,18 @@
 
                     </div>
 
-                    <input name="estimated-cost" type="number" class="form-control"
+                    <input name="" type="number" class="form-control vendor-cost"
                       placeholder="estimated cost">
                   </div>
                 </div>
               </div>
             </template>
           </div>
-
+          {% comment %} <input class="unique" name=""></input> {% endcomment %}
+          <input class="vendor-count" name="vendor-count"></input>
           <div class="md-2">
-            <input type="button" id="add-vendor-button" name="add-more-designer" class="btn btn-primary"><i class="fa fa-plus"></i>
-              &nbsp;&nbsp;Add More Vendors</input>
+            <button type="button" id="add-vendor-button" name="add-more-vendor" class="btn btn-primary"><i class="fa fa-plus"></i>
+              &nbsp;&nbsp;Add More Vendors</button>
           </div>
 
           <h5>Summary</h5>

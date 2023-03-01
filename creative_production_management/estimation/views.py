@@ -34,6 +34,7 @@ def create_estimation(request, username:str):
   if request.method == 'POST':
     name = request.POST['name']
     estimated_duration_months = request.POST['estimated-duration-months']
+    estimated_cost = request.POST['estimated-cost']
     description = request.POST['description']
 
     estimated_time = request.POST['estimated-time']
