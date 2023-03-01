@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns #deployment
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # apatoto landing page tai estimation
     path('', include('estimation.urls')),
 ]
+
+urlpatterns += staticfiles_urlpatterns() #deployment

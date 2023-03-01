@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-s$xmme(hgn7132jskbq64kp&x2^95566fpd*or-ugrxcwghx90
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -97,8 +97,13 @@ WSGI_APPLICATION = 'creative_production_management.wsgi.application'
 # }
 
 # this works too
+# DATABASES = {
+#     'default': dj_database_url.parse('postgres://bvieeszx:87sV977DrVkXDGLWhJP3ego37WeSZCHE@tiny.db.elephantsql.com/bvieeszx', conn_max_age=600),
+# }
+
+#deployment
 DATABASES = {
-    'default': dj_database_url.parse('postgres://bvieeszx:87sV977DrVkXDGLWhJP3ego37WeSZCHE@tiny.db.elephantsql.com/bvieeszx', conn_max_age=600),
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL')),
 }
 
 # Password validation
