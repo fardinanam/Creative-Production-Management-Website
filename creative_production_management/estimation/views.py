@@ -32,25 +32,23 @@ def prev_estimations(request, username:str):
 
 def create_estimation(request, username:str):
   if request.method == 'POST':
+    print(request.POST)
     name = request.POST['name']
     estimated_duration_months = request.POST['estimated-duration']
     estimated_cost = request.POST['estimated-cost']
     description = request.POST['description']
 
-    estimated_time = request.POST['estimated-time']
-    estimated_cost = request.POST['estimated-cost']
-
     cso = CSO.objects.get(username=username)
-    designer = Designer.objects.get(username="anup")
-    tag = Tag.objects.get(name="video editor")
-    vendor = Vendor.objects.get(name="Ananto")
+    designer = Designer.objects.get(username="abhowmik")
+    tag = Tag.objects.get(name="eid")
+    vendor = Vendor.objects.get(name="Asif Inc")
     
     # designer_set = set()
     # designer_set.add(designer)
     # tag_set = set()
 
     # try:
-    estimation = Estimation.objects.create(description=description, cso=cso, estimated_duration_months=estimated_time, estimated_cost=estimated_cost)
+    estimation = Estimation.objects.create(name=name, description=description, cso=cso, estimated_duration_months=estimated_duration_months, estimated_cost=estimated_cost)
 
     # tag_set.add(tag)
     # estimation = Estimation(description=description, cso=cso, estimated_duration_months=estimated_time, estimated_cost=estimated_cost, designers=designer_set, tags=tag_set, vendors=vendor)
@@ -61,6 +59,8 @@ def create_estimation(request, username:str):
     estimation.vendors.add(vendor)
     # except:
     #   print("error")
+
+    return redirect('/prev-estimations/' + str(cso.username) + '/')
 
   if request.method == 'GET':
     designers = Designer.objects.all()

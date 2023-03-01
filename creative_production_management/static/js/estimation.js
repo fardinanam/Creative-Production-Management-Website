@@ -4,8 +4,8 @@ const estimationNameInput = document.getElementById("estimation-name");
 const estimationDurationFields = document.getElementsByClassName("estimated-duration");
 const estimationDurationInput = document.getElementById("estimated-duration");
 
-// const estimationCostFields = document.getElementsByClassName("estimated-cost");
-// const estimationCostInput = document.getElementById("estimated-cost");
+const estimationCostFields = document.getElementsByClassName("estimated-cost");
+const estimationCostInput = document.getElementById("estimated-cost");
 
 const addDesignerContainer = document.querySelector("[add-designer-container]");
 const addDesignerTemplate = document.querySelector("[add-designer-template]");
@@ -29,12 +29,12 @@ estimationDurationInput.addEventListener("input", () => {
   }
 });
 
-// // change cost according to the input change of estimation cost
-// estimationCostInput.addEventListener("input", () => {
-//   for (let i = 0; i < estimationCostFields.length; i++) {
-//     estimationCostFields[i].textContent = estimationCostInput.value;
-//   }
-// });
+// change cost according to the input change of estimation cost
+estimationCostInput.addEventListener("input", () => {
+  for (let i = 0; i < estimationCostFields.length; i++) {
+    estimationCostFields[i].textContent = estimationCostInput.value;
+  }
+});
 
 // add designer
 function addDesigner() {

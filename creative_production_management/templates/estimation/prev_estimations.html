@@ -24,7 +24,7 @@
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Duration (months)</th>
-            <th scope="col"></th>
+            <th scope="col">Cost (taka)</th>
           </tr>
         </thead>
         <tbody>
@@ -34,7 +34,8 @@
               <td>{{ estimation.name }}</td>
               <td>{{ estimation.description }}</td>
               <td>{{ estimation.estimated_duration_months }}</td>
-              <td><button id="edit-estimation" name="edit-estimation" class="btn btn-primary">Edit</button></td>
+              <td>{{ estimation.estimated_cost }}</td>
+              {% comment %} <td><button id="edit-estimation" name="edit-estimation" class="btn btn-primary">Edit</button></td> {% endcomment %}
             </tr>
           {% endfor %}
         </tbody>
