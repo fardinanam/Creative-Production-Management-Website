@@ -16,7 +16,7 @@
         <h4>Creating <span id="title" class="estimation-name"></span> </h4>
         <br>
 
-        <form action="" method="POST">
+        <form id="main-form" action="" method="POST">
           {% csrf_token %}
           <div class="row g-3">
 
@@ -179,7 +179,7 @@
             </template>
           </div>
           {% comment %} <input class="unique" name=""></input> {% endcomment %}
-          <input class="vendor-count" name="vendor-count"></input>
+          <input class="vendor-count" name="vendor-count" hidden></input>
           <div class="md-2">
             <button type="button" id="add-vendor-button" name="add-more-vendor" class="btn btn-primary"><i class="fa fa-plus"></i>
               &nbsp;&nbsp;Add More Vendors</button>
