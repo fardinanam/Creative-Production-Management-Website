@@ -15,26 +15,28 @@
       <a href="/create-estimation/{{ username }}" id="add-estimation" name="add-estimation" class="btn btn-primary">Add Estimation</a>
     </center>
     <br>
-    <h5>Previous Estimations</h5>
-
+    
     <div class="card-bg">
       <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Client</th>
-            <th scope="col">Title</th>
-            <th scope="col">Deadline</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Duration (months)</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Anup </td>
-            <td>Bhai</td>
-            <td>codu</td>
-          </tr>
-
+          {% for estimation in estimations %}
+            <tr>
+              <th scope="row">{{ estimation.id }}</th>
+              <td>{{ estimation.name }}</td>
+              <td>{{ estimation.description }}</td>
+              <td>{{ estimation.estimated_duration_months }}</td>
+              <td><button id="edit-estimation" name="edit-estimation" class="btn btn-primary">Edit</button></td>
+            </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>

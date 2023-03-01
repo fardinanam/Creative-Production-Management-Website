@@ -13,7 +13,7 @@
     <br>
     <div class="row g-2">
       <div class="col-md-12">
-        <h4>Estimated Project Name </h4>
+        <h4>Creating <span id="title" class="estimation-name"></span> </h4>
         <br>
 
         <form action="" method="POST">
@@ -21,21 +21,15 @@
           <div class="row g-3">
 
             <div class="col-md-2">
-              <label for="estimated-cost">Name</label>
+              <label for="estimation-name">Name</label>
               <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">
-                    <i class="fa fa-clock-o"></i>
-                  </div>
-                </div>
-
-                <input id="name" name="name" type="number" class="form-control"
-                  placeholder="estimated time">
+                <input id="estimation-name" name="name" type="text" class="form-control"
+                  placeholder="estimation name">
               </div>
             </div>
 
             <div class="col-md-2">
-              <label for="estimated-cost">Estimated Time (Months)</label>
+              <label for="estimated-duration">Estimated Duration (Months)</label>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <div class="input-group-text">
@@ -43,8 +37,8 @@
                   </div>
                 </div>
 
-                <input id="estimated-time" name="estimated-time" type="number" class="form-control"
-                  placeholder="estimated time">
+                <input id="estimated-duration" name="estimated-duration" type="number" class="form-control"
+                  placeholder="estimated duration">
               </div>
             </div>
 
@@ -63,7 +57,6 @@
                   placeholder="estimated cost">
               </div>
             </div>
-
           </div>
 
           <br>
@@ -72,62 +65,154 @@
             <label for="Description">Description</label>
             <textarea class="form-control" id="description" name="description" rows="3"></textarea>
           </div>
-      </div>
+          </div>
 
-      <h5>Add Designers</h5>
+          <h5>Add Designers</h5>
+          <div add-designer-container>
+            <template add-designer-template>
+              <div class="row g-3 designer">
+                <div class="col-md-2">
+                  <label for="tag">Tag</label>
+                  <div class="input-group">
+                    <select class="form-select form-select-sm mb-3 tag" aria-label=".form-select-lg example">
+                      {% for tag in tags %}
+                        <option value={{ tag.name }}>{{ tag.name }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
 
-      <select class="selectpicker" data-live-search="true">
-        <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
-        <option data-tokens="mustard">Burger, Shake and a Smile</option>
-        <option data-tokens="frosting">Sugar, Spice and all things nice</option>
-      </select>
+                <div class="col-md-2">
+                  <label for="Category">Category</label>
+                  <div class="input-group">
+                    <select class="form-select form-select-sm mb-3 category" aria-label=".form-select-lg example">
+                      {% for category in designer_categories %}
+                        <option value={{ category }}>{{ category }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-2">
+                  <label for="num-of-designers">Number of Designers</label>
+                  <input id="num-of-designers" name="num-of-designers" type="number" class="form-control form-control-sm number-of-designers"
+                    placeholder="0" >
+                  </div>
+                </div>
+
+                <div class="col-md-2">
+                  <label for="estimated-cost">Estimated Cost (Taka)</label>
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class=" fa fa-money"></i>
+                      </div>
+
+                    </div>
+
+                    <input id="estimated-cost" name="estimated-cost" type="number" class="form-control"
+                      placeholder="estimated cost">
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+
+          <div class="md-2">
+            <input type="button" id="add-designer-button" name="add-more-designer" class="btn btn-primary"><i class="fa fa-plus"></i>
+              &nbsp;&nbsp;Add More Designers</input>
+          </div>
+
+          <h5>Add Vendors</h5>
+
+          <div add-vendor-container>
+            <template add-vendor-template>
+              <div class="row g-4 vendor">
+                <div class="col-md-2">
+                  <label for="tag">Tag</label>
+                  <div class="input-group">
+                    <select class="form-select form-select-sm mb-3" aria-label=".form-select-lg example">
+                      {% for tag in tags %}
+                        <option value={{ tag.name }}>{{ tag.name }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-2">
+                  <label for="Service">Service</label>
+                  <div class="input-group">
+                    <select class="form-select form-select-sm mb-3" aria-label=".form-select-lg example">
+                      {% for service in vendor_services %}
+                        <option value={{ service.name }}>{{ service.name }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-2">
+                  <label for="num-of-vendors">Number of Vendors</label>
+                  <input id="num-of-designers" name="num-of-designers" type="number" class="form-control form-control-sm"
+                    placeholder="0">
+                  </div>
+                </div>
+
+                <div class="col-md-2">
+                  <label for="estimated-cost">Estimated Cost (Taka)</label>
+                  <div class="input-group input-group-sm">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class=" fa fa-money"></i>
+                      </div>
+
+                    </div>
+
+                    <input name="estimated-cost" type="number" class="form-control"
+                      placeholder="estimated cost">
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+
+          <div class="md-2">
+            <input type="button" id="add-vendor-button" name="add-more-designer" class="btn btn-primary"><i class="fa fa-plus"></i>
+              &nbsp;&nbsp;Add More Vendors</input>
+          </div>
+
+          <h5>Summary</h5>
+
+          <div class="card-bg">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Title</th>
+                  <th scope="col">Number of Designers</th>
+                  <th scope="col">Number of Vendors</th>
+                  <th scope="col">Estimated Time</th>
+                  <th scope="col">Estimated Cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" class="estimation-name"></th>
+                  <td class="designer-count">0</td>
+                  <td class="vendor-count">0</td>
+                  <td><span class="estimated-duration">0</span> Months</td>
+                  <td><span class="estimation-cost">0</span> taka</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
 
 
-      <div class="md-2">
-        <button id="add-more-designer" name="add-more-designer" class="btn btn-primary"><i class="fa fa-plus"></i>
-          &nbsp;&nbsp;Add More Designers</button>
-      </div>
-
-      <h5>Add Vendors</h5>
-
-      <div class="md-2">
-        <button id="add-more-vendor" name="add-more-vendor" class="btn btn-primary"><i class="fa fa-plus"></i>
-          &nbsp;&nbsp;Add More Vendors</button>
-      </div>
-
-      <h5>Summary</h5>
-
-      <div class="card-bg">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Title</th>
-              <th scope="col">Number of Designers</th>
-              <th scope="col">Number of Vendors</th>
-              <th scope="col">Estimated Time</th>
-              <th scope="col">Estimated Cost</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Estimated Project Name</th>
-              <td>2 </td>
-              <td>3</td>
-              <td>3 Months</td>
-              <td>40,000</td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-
-
-      <div class="md-2">
-        <button type="submit" id="add-more-designer" name="add-estimation" class="btn btn-success"><i
-            class="fa fa-plus"></i>
-          &nbsp;&nbsp;Add Estimation</button>
-      </div>
-      </form>
+          <div class="md-2">
+            <button type="submit" id="add-more-designer" name="add-estimation" class="btn btn-success"><i
+                class="fa fa-plus"></i>
+              &nbsp;&nbsp;Add Estimation</button>
+          </div>
+        </form>
 
     </div>
 
@@ -136,3 +221,8 @@
 
 </div>
 {% endblock main %}
+
+{% block scripts %}
+  {% load static %}
+  <script src="{% static 'js/estimation.js' %}" defer></script>
+{% endblock scripts %}

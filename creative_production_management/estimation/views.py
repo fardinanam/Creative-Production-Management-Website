@@ -25,12 +25,12 @@ class CSOLoginView(CreateView):
 
 def prev_estimations(request, username:str):
   if request.method == 'GET':
-    return render(request, 'estimation/prev_estimations.html', {'username': username})
+    estimations = Estimation.objects.all().values()
+    print(estimations)
+    return render(request, 'estimation/prev_estimations.html', {'username': username, 'estimations': estimations })
       
 
 def create_estimation(request, username:str):
-
-
   if request.method == 'POST':
     name = request.POST['name']
     estimated_duration_months = request.POST['estimated-duration-months']
@@ -60,7 +60,30 @@ def create_estimation(request, username:str):
     estimation.vendors.add(vendor)
     # except:
     #   print("error")
-    
-  return render(request, 'estimation/create_estimation.html', {'username': username})
+
+  if request.method == 'GET':
+    designers = Designer.objects.all()
+    designer_categories = set()
+
+    for designer in designers:
+      if designer.category not in designer_categories:
+        designer_categories.add(designer.category)
+  
+    context = {
+      'username': username,
+      'designers': Designer.objects.all(),
+      'tags': Tag.objects.all(),
+      'vendors': Vendor.objects.all(),
+      'designer_categories': designer_categories
+    }
+    return render(request, 'estimation/create_estimation.html', context)
+
+def edit_estimation(request, estimation_id:int):
+
+  if request.method == 'GET':
+    estimation = Estimation.objects.get(id=estimation_id)
+    print(estimation.description)
+    # create edit estimation page here
+    return render(request, 'estimation/edit_estimation.html', {'estimation': estimation})
 
 
