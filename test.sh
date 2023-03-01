@@ -1,0 +1,2 @@
+cd creative_production_management
+python manage.py runserver
